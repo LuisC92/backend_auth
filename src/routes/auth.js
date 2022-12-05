@@ -1,9 +1,13 @@
 const authRouter = require("express").Router();
-const { checkEmail } = require("../middlewares/auth");
+const { checkEmail, createNewEmail } = require("../middlewares/auth");
 const Users = require("../controllers/users");
 //! route to create new user
-authRouter.post("/signin", checkEmail, Users.createUser);
+//* /auth/signin
+authRouter.post("/signin", createNewEmail, Users.createUser);
 
 //! route for login
+//* /auth/LOGIN
+authRouter.post("/login", checkEmail, Users.userLogIn);
+
 
 module.exports = authRouter;
